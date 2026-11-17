@@ -3,8 +3,14 @@
 export const site = {
   name: "Esther Newton",
   firstName: "esther",
-  // TODO: change to your real domain once it's connected in Vercel.
-  url: "https://esthernewton.com",
+  // Your site's address, used for link previews and the sitemap.
+  // Set NEXT_PUBLIC_SITE_URL in Vercel once your custom domain is connected (e.g. https://esthernewton.com).
+  // Until then it uses your Vercel address automatically.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "http://localhost:3000"),
   title: "Esther Newton · Product + Engineering",
   description:
     "Industrial Engineering student at Penn State and 2× AWS intern heading into product management. Projects, experience, and the occasional sticker.",

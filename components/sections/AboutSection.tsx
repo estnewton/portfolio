@@ -48,7 +48,7 @@ export function AboutSection() {
         <ul className="mt-3 flex flex-wrap gap-1.5">
           {about.lookingFor.notes.map((n) => (
             <li key={n}>
-              <Tag tone="ink">{n.startsWith("TODO") ? <Todo text={n} /> : n}</Tag>
+              {n.startsWith("TODO") ? <Todo text={n} /> : <Tag tone="ink">{n}</Tag>}
             </li>
           ))}
         </ul>

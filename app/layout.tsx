@@ -20,6 +20,22 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: site.title, template: `%s · ${site.name}` },
   description: site.description,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  keywords: ["Esther Newton", "product manager", "software engineer", "Penn State", "industrial engineering", "AWS intern", "portfolio"],
+  openGraph: {
+    type: "website",
+    url: site.url,
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

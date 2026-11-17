@@ -86,7 +86,7 @@ function shortRole(role: string) {
 }
 
 export function HighlightsCard() {
-  const colors = ["bg-bubblegum text-paper", "bg-cherry text-paper", "bg-pen text-paper", "bg-paper text-cherry", "bg-ink text-bubblegum-soft"];
+  const colors = ["bg-bubblegum text-ink", "bg-cherry text-paper", "bg-pen text-paper", "bg-paper text-cherry", "bg-ink text-bubblegum-soft"];
   return (
     <Link href="/highlights" draggable={false} className={linkBase} style={{ width: 210 }}>
       <div className="relative rounded-[18px] border-2 border-dashed border-ink/25 bg-kraft p-4 paper-shadow">

@@ -3,7 +3,7 @@ import { Tape } from "@/components/decor/Decor";
 import { SectionHeader, Todo } from "./ui";
 
 const badgeColors = [
-  "bg-bubblegum text-paper",
+  "bg-bubblegum text-ink",
   "bg-cherry text-paper",
   "bg-pen text-paper",
   "bg-ink text-bubblegum-soft",

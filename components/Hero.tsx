@@ -73,7 +73,7 @@ export function Hero({ toolbar }: { toolbar?: React.ReactNode }) {
         </nav>
       </div>
 
-      {toolbar && <div className="hidden lg:block">{toolbar}</div>}
+      {toolbar && <div className="board-js hidden lg:block">{toolbar}</div>}
     </header>
   );
 }
