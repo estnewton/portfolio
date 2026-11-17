@@ -15,8 +15,9 @@ export const site = {
   seeking: "Seeking Summer 2027 PM / SWE internships",
   location: "State College, PA",
   email: "esthernewton32@gmail.com",
-  // TODO: paste your LinkedIn URL. The LinkedIn button stays hidden until this is set.
-  linkedin: "",
+  // Each icon stays hidden on the live site if its URL is empty.
+  linkedin: "https://www.linkedin.com/in/esthernewton/",
+  github: "https://github.com/estnewton",
   // Drop your resume at /public/resume.pdf
   resume: "/resume.pdf",
 };
