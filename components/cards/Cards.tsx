@@ -5,7 +5,7 @@ import { experience } from "@/content/experience";
 import { highlights } from "@/content/highlights";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
-import { BinderClip, DiscoBall, PinIcon, SquiggleArrow, StarDoodle, Tape } from "@/components/decor/Decor";
+import { BinderClip, DiscoBall, PinIcon, Pushpin, SquiggleArrow, StarDoodle, Tape } from "@/components/decor/Decor";
 
 // Presentational cards shared by the draggable board and the mobile stack.
 // They read from /content, so you shouldn't need to edit these to update text.
@@ -40,7 +40,7 @@ export function ProjectsCard() {
           <Label className="text-cherry">Projects</Label>
           <ol className="space-y-1">
             {projects.map((p, i) => (
-              <li key={p.slug} className="flex items-baseline gap-2 font-display text-[15px] font-bold leading-tight">
+              <li key={p.slug} className="flex items-baseline gap-2 font-serif text-[19px] leading-[1.05]">
                 <span className="font-mono text-[10px] font-normal text-cherry">{String(i + 1).padStart(2, "0")}</span>
                 {p.title}
               </li>
@@ -63,10 +63,10 @@ export function ExperienceCard() {
       <div className="relative lined-paper paper-shadow px-4 pb-4 pl-10 pt-3">
         <Tape className="absolute -top-3 right-6 h-6 w-20 rotate-[8deg]" />
         <Label className="text-cherry">Experience</Label>
-        <ul className="mt-2 space-y-[3px] font-display text-[14px] leading-[21px]">
+        <ul className="mt-2 space-y-[3px] font-serif text-[17px] leading-[21px]">
           {top.map((e) => (
             <li key={e.id}>
-              <span className="font-bold">AWS</span> · {shortRole(e.role)} &apos;{e.start.slice(2, 4)}
+              AWS · <em>{shortRole(e.role)}</em> &apos;{e.start.slice(2, 4)}
             </li>
           ))}
           <li className="text-ink-soft">+ {more} more roles</li>
@@ -90,6 +90,7 @@ export function HighlightsCard() {
   return (
     <Link href="/highlights" draggable={false} className={linkBase} style={{ width: 210 }}>
       <div className="relative rounded-[18px] border-2 border-dashed border-ink/25 bg-kraft p-4 paper-shadow">
+        <Pushpin className="absolute -top-4 left-1/2 size-8 -translate-x-1/2" color="var(--bubblegum)" />
         <Label className="text-cherry">Highlights</Label>
         <div className="mt-3 grid grid-cols-3 gap-2">
           {highlights.map((h, i) => (
@@ -113,7 +114,8 @@ export function HighlightsCard() {
 
 export function AboutCard() {
   return (
-    <Link href="/about" draggable={false} className={linkBase} style={{ width: 210 }}>
+    <Link href="/about" draggable={false} className={`${linkBase} relative`} style={{ width: 210 }}>
+      <Pushpin className="absolute -top-3 left-6 z-10 size-8" />
       <div
         className="relative bg-paper px-5 pb-5 pt-6 paper-shadow"
         style={{
@@ -162,7 +164,7 @@ export function ContactCard() {
 export function CurrentlyCard() {
   return (
     <section aria-label="Currently" className="relative bg-sticky p-4 pt-5 paper-shadow" style={{ width: 220 }}>
-      <Tape className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 -rotate-3" color="rgba(47,75,216,0.28)" />
+      <Pushpin className="absolute -top-4 left-1/2 size-8 -translate-x-1/2" color="var(--pen)" />
       <div className="flex items-baseline justify-between">
         <Label className="text-cherry">Currently</Label>
         <span className="font-mono text-[10px] text-ink-soft">{currently.updated}</span>
@@ -171,7 +173,7 @@ export function CurrentlyCard() {
         {currently.items.map((it) => (
           <div key={it.label}>
             <dt className="font-hand text-xl leading-none text-pen">{it.label}</dt>
-            <dd className="font-display text-[14px] font-semibold leading-snug">{it.text}</dd>
+            <dd className="font-serif text-[18px] leading-[1.15]">{it.text}</dd>
           </div>
         ))}
       </dl>
@@ -214,9 +216,9 @@ export function PinSticker() {
 
 export function HintNote() {
   return (
-    <span className="flex items-center gap-1" style={{ width: 170 }}>
+    <span className="flex items-center gap-1 bg-paper px-3 py-2 paper-shadow" style={{ width: 190 }}>
       <span className="font-hand text-[22px] leading-[1] text-pen">psst… drag things around</span>
-      <SquiggleArrow className="w-12 shrink-0 -rotate-12" />
+      <SquiggleArrow className="w-10 shrink-0 -rotate-12" />
     </span>
   );
 }

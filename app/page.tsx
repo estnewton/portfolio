@@ -9,17 +9,21 @@ export default function Home() {
     <BoardProvider>
       <main
         id="main"
-        className="board-bg min-h-dvh lg:grid lg:h-dvh lg:min-h-[760px] lg:grid-cols-[minmax(400px,36%)_1fr] lg:overflow-hidden"
+        className="blush-paper min-h-dvh lg:grid lg:h-dvh lg:min-h-[760px] lg:grid-cols-[minmax(420px,37%)_1fr] lg:overflow-hidden"
       >
         <Hero toolbar={<BoardToolbar />} />
 
-        {/* Desktop: draggable board */}
-        <div className="hidden p-6 pl-2 lg:block">
-          <Board />
+        {/* Desktop: draggable cork board in a wood frame */}
+        <div className="hidden py-6 pr-6 lg:block">
+          <div className="cork-frame h-full rounded-[14px] p-3">
+            <div className="cork-bg h-full rounded-[6px]">
+              <Board />
+            </div>
+          </div>
         </div>
 
-        {/* Mobile + tablet: scrollable stack */}
-        <div className="lg:hidden">
+        {/* Mobile + tablet: scrollable stack on cork */}
+        <div className="cork-bg lg:hidden">
           <MobileStack />
         </div>
       </main>

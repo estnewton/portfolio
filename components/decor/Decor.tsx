@@ -120,3 +120,14 @@ export function SquiggleArrow({ className = "", style }: Props) {
     </svg>
   );
 }
+
+export function Pushpin({ className = "", style, color = "var(--cherry)" }: Props & { color?: string }) {
+  return (
+    <svg aria-hidden viewBox="0 0 32 32" className={className} style={style}>
+      <ellipse cx="18" cy="24" rx="9" ry="3.5" fill="rgba(40,20,8,0.3)" />
+      <circle cx="15" cy="14" r="10" fill={color} />
+      <circle cx="15" cy="14" r="10" fill="none" stroke="rgba(0,0,0,0.18)" strokeWidth="1" />
+      <ellipse cx="11.5" cy="10" rx="3.5" ry="2.4" fill="#fff" opacity="0.55" />
+    </svg>
+  );
+}

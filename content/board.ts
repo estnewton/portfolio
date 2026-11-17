@@ -15,9 +15,9 @@ export const boardItems: BoardItemSpec[] = [
   { id: "highlights", kind: "section", label: "Highlights", w: 210, h: 210, start: { x: 0.4, y: 0.42, r: -3 } },
   { id: "about", kind: "section", label: "About", w: 210, h: 190, start: { x: 0.03, y: 0.56, r: 2 } },
   { id: "contact", kind: "section", label: "Contact", w: 230, h: 160, start: { x: 0.36, y: 0.76, r: -2 } },
-  { id: "name", kind: "sticker", label: "esther sticker", w: 160, h: 76, start: { x: 0.8, y: 0.0, r: 6 } },
+  { id: "name", kind: "sticker", label: "esther sticker", w: 190, h: 80, start: { x: 0.76, y: 0.02, r: 6 } },
   { id: "disco", kind: "sticker", label: "Disco ball sticker", w: 96, h: 96, start: { x: 0.27, y: 0.42, r: 0 } },
   { id: "star", kind: "sticker", label: "Star doodle", w: 60, h: 60, start: { x: 0.3, y: 0.68, r: 10 } },
   { id: "pin", kind: "sticker", label: "Location sticker", w: 170, h: 52, start: { x: 0.74, y: 0.86, r: -3 } },
-  { id: "hint", kind: "sticker", label: "Drag hint", w: 170, h: 64, start: { x: 0.7, y: 0.72, r: -4 } },
+  { id: "hint", kind: "sticker", label: "Drag hint", w: 190, h: 70, start: { x: 0.7, y: 0.72, r: -4 } },
 ];

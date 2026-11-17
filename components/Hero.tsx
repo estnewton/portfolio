@@ -1,77 +1,87 @@
 import Link from "next/link";
-import { FileDown, Mail } from "lucide-react";
+import { ArrowUpRight, FileDown, Mail } from "lucide-react";
 import { sections, site } from "@/content/site";
 
-const pill =
-  "inline-flex items-center gap-2 rounded-full border-[1.5px] border-ink bg-paper px-4 py-2 text-sm font-medium text-ink transition hover:-translate-y-0.5 hover:bg-bubblegum-soft";
+const btn =
+  "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition hover:-translate-y-0.5";
+const primary = `${btn} bg-cherry text-paper hover:bg-ink`;
+const secondary = `${btn} border border-cherry/40 bg-paper/60 text-cherry hover:bg-paper`;
 
-/** The 30-second scan: who, what, what I'm looking for, and how to reach me. */
+/** The 30-second scan: who, what, what I'm looking for, and how to reach me. Styled like a magazine cover. */
 export function Hero({ toolbar }: { toolbar?: React.ReactNode }) {
   return (
-    <header className="flex flex-col gap-6 px-6 pb-8 pt-10 sm:px-10 lg:h-full lg:justify-between lg:py-10 lg:pl-14 lg:pr-4">
-      <div className="flex flex-col gap-5">
-        <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-ink-soft">
-          {site.kicker.join(" · ")}
-        </p>
-
-        <div>
-          <p className="font-hand text-3xl text-pen sm:text-4xl">hi, i&apos;m esther :)</p>
-          <h1 className="mt-1 font-display text-[clamp(2.6rem,5.2vw,4.75rem)] font-extrabold leading-[0.95] tracking-[-0.035em] text-ink">
-            {site.headline.before}{" "}
-            <span className="whitespace-nowrap">
-            <span className="relative inline-block text-cherry">
-              {site.headline.highlight}
-              <svg
-                aria-hidden
-                viewBox="0 0 200 20"
-                preserveAspectRatio="none"
-                className="absolute -bottom-2 left-0 h-3 w-full"
-              >
-                <path d="M3 14 C 50 4, 120 4, 197 10" fill="none" stroke="var(--bubblegum)" strokeWidth="6" strokeLinecap="round" />
-              </svg>
-            </span>
-            {site.headline.after}
-            </span>
-          </h1>
+    <header className="flex flex-col gap-6 px-6 pb-10 pt-8 sm:px-10 lg:h-full lg:justify-between lg:py-8 lg:pl-12 lg:pr-8">
+      <div className="flex flex-col gap-6">
+        {/* masthead */}
+        <div className="flex items-center justify-between border-b border-cherry/30 pb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-cherry">
+          <span>{site.name}</span>
+          <span>Portfolio · Vol. 01</span>
         </div>
 
-        <p className="max-w-md text-[17px] leading-relaxed text-ink-soft">{site.intro}</p>
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">{site.kicker.join(" · ")}</p>
+          <h1 className="mt-4 font-serif text-[clamp(3.1rem,6vw,5.9rem)] leading-[0.9] tracking-[-0.02em] text-ink">
+            {site.headline.before}{" "}
+            <span className="whitespace-nowrap">
+              <em className="relative inline-block text-cherry">
+                {site.headline.highlight}
+                <svg
+                  aria-hidden
+                  viewBox="0 0 200 20"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-1 left-0 h-2.5 w-full"
+                >
+                  <path d="M3 14 C 50 4, 120 4, 197 10" fill="none" stroke="var(--bubblegum)" strokeWidth="5" strokeLinecap="round" />
+                </svg>
+              </em>
+              {site.headline.after}
+            </span>
+          </h1>
+          <p className="mt-3 font-hand text-2xl text-pen">— hi, i&apos;m esther :)</p>
+        </div>
 
-        <p className="inline-flex w-fit items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper">
+        <p className="max-w-md text-[16px] leading-relaxed text-ink-soft">{site.intro}</p>
+
+        <p className="inline-flex w-fit items-center gap-2 rounded-full border border-ink/15 bg-paper/70 px-4 py-2 text-sm text-ink">
           <span className="relative flex size-2.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-bubblegum opacity-75" />
-            <span className="relative inline-flex size-2.5 rounded-full bg-bubblegum" />
+            <span className="relative inline-flex size-2.5 rounded-full bg-cherry" />
           </span>
           {site.seeking}
         </p>
 
         <div className="flex flex-wrap gap-2">
-          <a href={site.resume} className={pill} download>
+          <a href={site.resume} className={primary} download>
             <FileDown aria-hidden className="size-4" /> Resume
           </a>
-          <a href={`mailto:${site.email}`} className={pill}>
+          <a href={`mailto:${site.email}`} className={secondary}>
             <Mail aria-hidden className="size-4" /> Email
           </a>
           {site.linkedin && (
-            <a href={site.linkedin} className={pill} target="_blank" rel="noopener noreferrer">
+            <a href={site.linkedin} className={secondary} target="_blank" rel="noopener noreferrer">
               <LinkedInIcon /> LinkedIn
             </a>
           )}
         </div>
 
-        <nav aria-label="Sections">
-          <ul className="flex flex-wrap gap-x-4 gap-y-1">
-            {sections.map((s) => (
+        <nav aria-label="Sections" className="border-t border-cherry/30 pt-3">
+          <ol className="grid grid-cols-2 gap-x-6 gap-y-1 sm:grid-cols-3">
+            {sections.map((s, i) => (
               <li key={s.id}>
                 <Link
                   href={s.href}
-                  className="font-hand text-2xl text-ink underline decoration-bubblegum decoration-2 underline-offset-4 hover:text-cherry"
+                  className="group inline-flex items-baseline gap-2 font-serif text-[22px] italic text-ink hover:text-cherry"
                 >
-                  {s.label.toLowerCase()}
+                  <span className="font-mono text-[10px] not-italic text-cherry">{String(i + 1).padStart(2, "0")}</span>
+                  {s.label}
+                  <ArrowUpRight
+                    aria-hidden
+                    className="size-4 self-center opacity-0 transition group-hover:opacity-100"
+                  />
                 </Link>
               </li>
             ))}
-          </ul>
+          </ol>
         </nav>
       </div>
 
