@@ -8,7 +8,7 @@ export const about = {
     "TODO: one or two sentences in your own voice: what you care about, what you're like on a team, or what you do when you're not working.",
   ],
   // Put a photo at /public/images/esther.jpg and set src to "/images/esther.jpg".
-  photo: { src: "", alt: "Esther Newton smiling" },
+  photo: { src: "/images/esther.jpg", alt: "Esther smiling in a cream jacket on a cliffside overlooking the Mediterranean" },
   lookingFor: {
     title: "Summer 2027 internships",
     detail:

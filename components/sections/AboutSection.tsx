@@ -27,7 +27,7 @@ export function AboutSection() {
           <Tape className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 -rotate-3" />
           <div className="relative aspect-[4/5] bg-bubblegum-soft">
             {about.photo.src ? (
-              <Image src={about.photo.src} alt={about.photo.alt} fill sizes="240px" className="object-cover" />
+              <Image src={about.photo.src} alt={about.photo.alt} fill sizes="240px" className="object-cover object-[55%_40%]" />
             ) : (
               <span className="absolute inset-0 grid place-items-center p-4 text-center font-hand text-xl text-cherry">
                 your photo here

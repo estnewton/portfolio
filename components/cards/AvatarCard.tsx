@@ -20,7 +20,7 @@ export function AvatarCard() {
         <Avatar className="block h-auto w-full" waving={hover} />
       </div>
       <figcaption className="pt-1 text-center font-hand text-xl text-ink">
-        that&apos;s me <span className="text-ink-soft">(placeholder!)</span>
+        that&apos;s me :)
       </figcaption>
     </figure>
   );

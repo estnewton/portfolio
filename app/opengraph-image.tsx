@@ -16,7 +16,7 @@ const serifItalic = readFile(join(fontDir, "instrument-serif/files/instrument-se
 const mono = readFile(join(fontDir, "dm-mono/files/dm-mono-latin-400-normal.woff"));
 
 const C = {
-  blush: "#f2dde2",
+  blush: "#f4eee4",
   ink: "#1e1b18",
   inkSoft: "#5b524a",
   cherry: "#8a1c2b",

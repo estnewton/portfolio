@@ -2,9 +2,9 @@
 
 /* ── Palette: "scrapbook on a cutting mat" ───────────────────────── */
 :root {
-  --board: #f5efe6;
-  --grid: #f2d6df;
-  --grid-strong: #ebbccb;
+  --board: #f6f1e8;
+  --grid: #ebe2d4;
+  --grid-strong: #ddd0bd;
   --paper: #fffdf8;
   --kraft: #e6d8c3;
   --sticky: #ffe1ea;
@@ -15,8 +15,8 @@
   --cherry: #8a1c2b;
   --pen: #2f4bd8;
   --tape: rgba(243, 127, 176, 0.55);
-  --blush: #f2dde2;
-  --blush-deep: #e7c6cf;
+  --blush: #f4eee4;
+  --blush-deep: #e5dac9;
   --cork: #c39062;
   --frame: #9b6a41;
 }
@@ -55,10 +55,10 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Homepage hero: blush magazine paper with a fine grain */
+/* Homepage hero: off-white beige paper with a fine grain */
 .blush-paper {
   background-color: var(--blush);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.2 0 0 0 0 0.25 0 0 0 0.18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0 0.2 0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Homepage board: cork with speckles and soft blotches, inside a wood frame */
