@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
+/* ── Palette: "scrapbook on a cutting mat" ───────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --board: #f5efe6;
+  --grid: #f2d6df;
+  --grid-strong: #ebbccb;
+  --paper: #fffdf8;
+  --kraft: #e6d8c3;
+  --sticky: #ffe1ea;
+  --ink: #1e1b18;
+  --ink-soft: #5b524a;
+  --bubblegum: #f37fb0;
+  --bubblegum-soft: #fbd3e3;
+  --cherry: #8a1c2b;
+  --pen: #2f4bd8;
+  --tape: rgba(243, 127, 176, 0.55);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-board: var(--board);
+  --color-paper: var(--paper);
+  --color-kraft: var(--kraft);
+  --color-sticky: var(--sticky);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-bubblegum: var(--bubblegum);
+  --color-bubblegum-soft: var(--bubblegum-soft);
+  --color-cherry: var(--cherry);
+  --color-pen: var(--pen);
+
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), cursive;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+  --font-bubble: var(--font-bagel), var(--font-inter-tight), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--board);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--board);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Cutting-mat grid: fine 24px lines + stronger lines every 5 squares */
+.board-bg {
+  background-color: var(--board);
+  background-image:
+    linear-gradient(var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
+  background-position: -1px -1px;
+}
+
+.paper-shadow {
+  box-shadow:
+    0 1px 0 rgba(30, 27, 24, 0.06),
+    0 10px 20px -10px rgba(30, 27, 24, 0.35);
+}
+
+.lined-paper {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(90deg, transparent 27px, rgba(138, 28, 43, 0.45) 27px, rgba(138, 28, 43, 0.45) 28px, transparent 28px),
+    repeating-linear-gradient(transparent 0 23px, rgba(47, 75, 216, 0.18) 23px 24px);
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--pen);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--bubblegum-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
