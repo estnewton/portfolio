@@ -7,6 +7,8 @@
 //           so flip them.
 //   photo   Optional. Save the picture in /public/images/travel/ and put its path here, e.g.
 //           "/images/travel/paris.jpg". Cities without one show "photo coming soon" when clicked.
+//   photoAlt       Optional description of the photo for screen readers.
+//   photoPosition  Optional focus point for the crop, e.g. "50% 90%" keeps the bottom of a tall photo.
 //   caption Optional line under the photo.
 //   cluster Nearby cities that share one label when the map is zoomed out.
 
@@ -15,6 +17,8 @@ export type City = {
   country: string;
   coords: [number, number];
   photo?: string;
+  photoAlt?: string;
+  photoPosition?: string;
   caption?: string;
   cluster?: string;
 };
@@ -38,7 +42,15 @@ const cities: City[] = [
   { name: "Marseille", country: "France", coords: [5.37, 43.297], cluster: "Provence & Riviera" },
   { name: "Saint-Tropez", country: "France", coords: [6.64, 43.272], cluster: "Provence & Riviera" },
   { name: "Cannes", country: "France", coords: [7.017, 43.552], cluster: "Provence & Riviera" },
-  { name: "Nice", country: "France", coords: [7.262, 43.71], cluster: "Provence & Riviera" },
+  {
+    name: "Nice",
+    country: "France",
+    coords: [7.262, 43.71],
+    cluster: "Provence & Riviera",
+    photo: "/images/travel/nice.jpg",
+    photoAlt: "The pebble beach in Nice under a bright blue sky, with hillside villas along the coast.",
+    photoPosition: "50% 90%",
+  },
   { name: "Èze", country: "France", coords: [7.361, 43.728], cluster: "Provence & Riviera" },
   { name: "Monaco", country: "Monaco", coords: [7.42, 43.738], cluster: "Provence & Riviera" },
   { name: "Ventimiglia", country: "Italy", coords: [7.607, 43.791], cluster: "Provence & Riviera" },
@@ -46,8 +58,23 @@ const cities: City[] = [
   { name: "Florence", country: "Italy", coords: [11.256, 43.77] },
   { name: "Madrid", country: "Spain", coords: [-3.704, 40.417] },
   { name: "Porto", country: "Portugal", coords: [-8.611, 41.15] },
-  { name: "Budapest", country: "Hungary", coords: [19.04, 47.498] },
+  {
+    name: "Budapest",
+    country: "Hungary",
+    coords: [19.04, 47.498],
+    photo: "/images/travel/budapest.jpg",
+    photoAlt: "Esther on a boat on the Danube at night, smiling in front of the lit-up Hungarian Parliament Building.",
+    photoPosition: "50% 50%",
+  },
   { name: "London", country: "United Kingdom", coords: [-0.128, 51.507] },
+  {
+    name: "Sahara Desert",
+    country: "Morocco",
+    coords: [-4.013, 31.1],
+    photo: "/images/travel/sahara.jpg",
+    photoAlt: "A line of ATVs riding over tall orange sand dunes in the Moroccan Sahara under a blue sky.",
+    photoPosition: "50% 72%",
+  },
 
   // United States
   { name: "New York City", country: "United States of America", coords: [-74.006, 40.713] },
@@ -77,7 +104,7 @@ export const travel = {
   ] as [[number, number], [number, number]],
   /** Quick-jump buttons above the map. The first one is the starting view. */
   regions: [
-    { label: "Europe", bounds: [[-11, 33], [22, 55]] },
+    { label: "Europe", bounds: [[-11, 29], [22, 55]] },
     { label: "United States", bounds: [[-125, 24], [-67, 49]] },
     { label: "Everywhere", bounds: [[-128, 18], [32, 60]] },
   ] as { label: string; bounds: [[number, number], [number, number]] }[],

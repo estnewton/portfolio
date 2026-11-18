@@ -43,6 +43,7 @@
   --font-mono: var(--font-dm-mono), ui-monospace, monospace;
   --font-bubble: var(--font-bagel), var(--font-inter-tight), sans-serif;
   --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-wide: var(--font-syncopate), var(--font-inter-tight), sans-serif;
 }
 
 html {

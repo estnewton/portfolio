@@ -11,12 +11,16 @@ export function Hero({ toolbar }: { toolbar?: React.ReactNode }) {
     <header className="flex flex-col gap-6 px-6 pb-10 pt-8 sm:px-10 lg:h-full lg:justify-between lg:py-8 lg:pl-12 lg:pr-8">
       <div className="flex flex-col gap-6">
         {/* masthead */}
-        <div className="flex items-center justify-between border-b border-cherry/30 pb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-cherry">
-          <span>{site.name}</span>
-          <span>Portfolio · Vol. 01</span>
+        <div className="flex items-end justify-between gap-4 border-b border-cherry/30">
+          {/* The name sits on the rule so the line runs through the bottom of the letters. */}
+          <span className="relative translate-y-[0.42em] whitespace-nowrap font-wide text-[clamp(1.15rem,1.9vw,1.75rem)] font-bold uppercase leading-none tracking-[0.02em] text-ink">
+            {site.name}
+            <span className="text-bubblegum">.</span>
+          </span>
+          <span className="whitespace-nowrap pb-2 font-mono text-[11px] uppercase tracking-[0.2em] text-cherry">Portfolio · Vol. 01</span>
         </div>
 
-        <div>
+        <div className="pt-2">
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">{site.kicker.join(" · ")}</p>
           <p className="mt-4 font-hand text-[2.1rem] leading-none text-pen">hi, I&apos;m Esther :)</p>
           <h1 className="mt-2 font-serif text-[clamp(3.1rem,6vw,5.9rem)] leading-[0.9] tracking-[-0.02em] text-ink">

@@ -347,10 +347,11 @@ export function TravelMapView({ W, H, mapW, mapH, cities, regions, countriesWith
                 {sel.c.photo ? (
                   <Image
                     src={sel.c.photo}
-                    alt={sel.c.caption ? `${sel.c.name}: ${sel.c.caption}` : `Esther in ${sel.c.name}`}
+                    alt={sel.c.photoAlt ?? `Photo from ${sel.c.name}`}
                     fill
                     sizes="208px"
                     className="object-cover"
+                    style={{ objectPosition: sel.c.photoPosition ?? "50% 50%" }}
                   />
                 ) : (
                   <span className="absolute inset-0 grid place-items-center font-hand text-xl text-cherry">photo coming soon</span>
