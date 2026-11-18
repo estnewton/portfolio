@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { highlights } from "@/content/highlights";
 import { Tape } from "@/components/decor/Decor";
 import { SectionHeader, Todo } from "./ui";
@@ -30,6 +31,16 @@ export function HighlightsSection() {
             <p className="mt-1 text-[14px] leading-snug text-ink-soft">
               <Todo text={h.detail} />
             </p>
+            {h.link && (
+              <a
+                href={h.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1 text-[13px] font-medium text-cherry hover:underline"
+              >
+                {h.link.label} <ArrowUpRight aria-hidden className="size-3.5" />
+              </a>
+            )}
           </li>
         ))}
       </ul>

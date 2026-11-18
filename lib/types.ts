@@ -64,6 +64,8 @@ export type Highlight = {
   /** Short text shown inside a badge, e.g. "MLT" or "15+" */
   mark: string;
   image?: Image;
+  /** Optional link, e.g. to an article. */
+  link?: Link;
 };
 
 export type Pos = { x: number; y: number; r: number };

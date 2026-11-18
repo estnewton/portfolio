@@ -93,7 +93,7 @@ export function HighlightsCard() {
         <Pushpin className="absolute -top-4 left-1/2 size-8 -translate-x-1/2" color="var(--bubblegum)" />
         <Label className="text-cherry">Honors &amp; Affiliations</Label>
         <div className="mt-3 grid grid-cols-3 gap-2">
-          {highlights.map((h, i) => (
+          {highlights.slice(0, 6).map((h, i) => (
             <span
               key={h.id}
               title={h.title}

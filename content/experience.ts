@@ -43,6 +43,20 @@ export const experience: Experience[] = [
     ],
   },
   {
+    id: "afe-ambassador",
+    org: "Amazon Future Engineer",
+    role: "Ambassador & Pod Facilitator",
+    location: "Remote · Part-time",
+    start: "2025-08",
+    end: null,
+    bullets: [
+      "Represent Amazon Future Engineer's mission to expand computer science access for underrepresented students.",
+      "Mentor younger students in my pod, helping them earn return offers at a Fortune 500 company.",
+      "Attended AFROTECH Conference 2025 fully funded, landing 3–4 interviews through recruiter outreach.",
+    ],
+    tags: ["Mentorship", "Community"],
+  },
+  {
     id: "valley",
     org: "VALLEY Magazine, Penn State",
     role: "Finance Director",

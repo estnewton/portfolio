@@ -47,4 +47,17 @@ export const highlights: Highlight[] = [
     kind: "badge",
     mark: "ACT-SO",
   },
+  {
+    id: "afrotech",
+    title: "Featured by AFROTECH",
+    detail:
+      "2025. Featured in AFROTECH's story on landing interviews at AFROTECH Conference, where I secured 3–4 interviews through recruiter outreach.",
+    year: "2025",
+    kind: "badge",
+    mark: "AFRO TECH",
+    link: {
+      label: "Read the article",
+      href: "https://afrotech.com/college-sophomores-how-landed-interviews-at-afrotech-conference",
+    },
+  },
 ];
