@@ -1,4 +1,3 @@
-import { site } from "@/content/site";
 import type { Project } from "@/lib/types";
 
 // Edit me: each project gets its own case-study page at /projects/<slug>.
@@ -23,7 +22,7 @@ export const projects: Project[] = [
     ],
     outcome:
       "Led end-to-end product definition for Slate, from user research to a prioritized roadmap and specs for urgency-aware task ranking, validated with 9 unit tests. The code is on my GitHub.",
-    links: [{ label: "View on GitHub", href: site.github }],
+    links: [{ label: "View on GitHub", href: "https://github.com/estnewton/Slate-smart-scheduler" }],
   },
 
   {
