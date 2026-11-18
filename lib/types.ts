@@ -9,6 +9,16 @@ export type Image = {
   alt: string;
 };
 
+export type ProjectPart = {
+  name: string;
+  /** Short line under the name, e.g. what the lab studies. */
+  about?: string;
+  when?: string;
+  focus: string;
+  bullets: string[];
+  link?: Link;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -23,6 +33,10 @@ export type Project = {
   outcome: string;
   links: Link[];
   cover?: Image;
+  /** Separate labs, teams or phases inside one case study, each shown as its own card. */
+  parts?: ProjectPart[];
+  /** Finished work (graphics, screenshots) shown under "the work". */
+  gallery?: Image[];
 };
 
 export type Experience = {

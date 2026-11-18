@@ -1,6 +1,6 @@
 # Esther Newton · Portfolio
 
-A personal portfolio built as a draggable cork board. The homepage is a blush, magazine-style intro next to a framed cork board of cards and stickers you can drag, tidy up, and shuffle. Each section (Projects, Experience, Highlights, About, Contact) slides in over the board and also has its own full page on a pink cutting-mat grid.
+A personal portfolio built as a draggable cork board. The homepage is a blush, magazine-style intro next to a framed cork board of cards and stickers you can drag, tidy up, and shuffle. Each section (Projects, Experience, Honors & Affiliations, About, Contact) slides in over the board and also has its own full page on a pink cutting-mat grid.
 
 Built with Next.js, TypeScript, Tailwind CSS and Motion (formerly Framer Motion).
 

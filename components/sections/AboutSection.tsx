@@ -44,7 +44,14 @@ export function AboutSection() {
       <Card className="mt-12 bg-bubblegum-soft">
         <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cherry">What I&apos;m looking for</p>
         <h2 className="mt-1 font-display text-2xl font-extrabold tracking-tight">{about.lookingFor.title}</h2>
-        <p className="mt-2 text-[16px] leading-relaxed">{about.lookingFor.detail}</p>
+        <ul className="mt-3 flex flex-wrap gap-2" aria-label="Timing">
+          {about.lookingFor.timing.map((t) => (
+            <li key={t} className="rounded-full border-[1.5px] border-cherry bg-paper px-3 py-1 font-serif text-[17px] italic text-cherry">
+              {t}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-[16px] leading-relaxed">{about.lookingFor.detail}</p>
         <ul className="mt-3 flex flex-wrap gap-1.5">
           {about.lookingFor.notes.map((n) => (
             <li key={n}>

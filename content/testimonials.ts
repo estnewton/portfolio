@@ -10,4 +10,10 @@
 
 export type Testimonial = { quote: string; name: string; role: string };
 
-export const testimonials: Testimonial[] = [];
+export const testimonials: Testimonial[] = [
+  {
+    quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    name: "Winston Churchill",
+    role: "A quote I live by",
+  },
+];

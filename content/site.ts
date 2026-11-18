@@ -2,7 +2,7 @@
 
 export const site = {
   name: "Esther Newton",
-  firstName: "esther",
+  firstName: "Esther",
   // Your site's address, used for link previews and the sitemap.
   // Set NEXT_PUBLIC_SITE_URL in Vercel once your custom domain is connected (e.g. https://esthernewton.com).
   // Until then it uses your Vercel address automatically.
@@ -14,12 +14,12 @@ export const site = {
   title: "Esther Newton · Product + Engineering",
   description:
     "Industrial Engineering student at Penn State and 2× AWS intern heading into product management. Projects, experience, and the occasional sticker.",
-  kicker: ["Product", "Engineering", "Systems"],
-  headline: { before: "I make complicated things feel", highlight: "simple", after: "." },
+  kicker: ["Product", "Engineering", "Systems", "Operations", "Strategy"],
+  headline: { before: "From whiteboard to", highlight: "shipped", after: "." },
   intro:
-    "Industrial Engineering @ Penn State ('28). Two AWS internships, SDE in 2025 and SWE + PM in 2026. Now heading into product management.",
-  seeking: "Seeking Summer 2027 PM / SWE internships",
-  location: "State College, PA",
+    "I'm a first-generation Industrial Engineering student at Penn State, fueled by ambition, community, purpose, and impact. I'm curious about how things work, and how they could work better. Let's connect and create what's next.",
+  seeking: "Open to Summer and Fall 2027 internships and 2028 full-time roles in product, strategy, and operations",
+  location: "State College / Pittsburgh, PA",
   email: "esthernewton32@gmail.com",
   // Each icon stays hidden on the live site if its URL is empty.
   linkedin: "https://www.linkedin.com/in/esthernewton/",
@@ -31,7 +31,7 @@ export const site = {
 export const sections = [
   { id: "projects", label: "Projects", href: "/projects" },
   { id: "experience", label: "Experience", href: "/experience" },
-  { id: "highlights", label: "Highlights", href: "/highlights" },
+  { id: "highlights", label: "Honors & Affiliations", href: "/highlights" },
   { id: "about", label: "About", href: "/about" },
   { id: "contact", label: "Contact", href: "/contact" },
 ] as const;

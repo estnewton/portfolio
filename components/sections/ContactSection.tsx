@@ -1,4 +1,3 @@
-import { FileDown, Mail } from "lucide-react";
 import { site } from "@/content/site";
 import { ContactForm } from "./ContactForm";
 import { Card, SectionHeader } from "./ui";
@@ -17,11 +16,6 @@ export function ContactSection() {
         <div className="space-y-4">
           <p className="font-hand text-2xl leading-tight text-pen">or reach me directly:</p>
           <ul className="space-y-1 text-[15px]">
-            <li>
-              <a href={`mailto:${site.email}`} className={linkRow}>
-                <Mail aria-hidden /> {site.email}
-              </a>
-            </li>
             {site.linkedin && (
               <li>
                 <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className={linkRow}>
@@ -32,13 +26,7 @@ export function ContactSection() {
                 </a>
               </li>
             )}
-            <li>
-              <a href={site.resume} download className={linkRow}>
-                <FileDown aria-hidden /> Download my resume
-              </a>
-            </li>
           </ul>
-          <p className="rounded-md bg-ink px-3 py-2 text-[14px] text-paper">{site.seeking}</p>
         </div>
       </div>
     </>

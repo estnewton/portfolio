@@ -14,7 +14,7 @@ export function HighlightsSection() {
   const polaroids = highlights.filter((h) => h.kind === "polaroid");
   return (
     <>
-      <SectionHeader id="section-title" kicker="03 · Highlights" title="Shiny things" note="collected along the way" />
+      <SectionHeader id="section-title" kicker="03 · Recognition" title="Honors & Affiliations" note="collected along the way" />
 
       <ul className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
         {badges.map((h, i) => (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
@@ -86,24 +87,92 @@ async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
           <Todo text={p.problem} />
         </p>
 
-        <h2 className="font-hand text-3xl leading-none text-pen md:text-right">the process</h2>
-        <ol className="space-y-4">
-          {p.process.map((step, n) => (
-            <li key={step} className="flex gap-4">
-              <span className="grid size-7 shrink-0 place-items-center rounded-full border-[1.5px] border-ink bg-paper font-mono text-[12px]">
-                {n + 1}
-              </span>
-              <p className="pt-0.5 text-[17px] leading-relaxed">
-                <Todo text={step} />
-              </p>
-            </li>
-          ))}
-        </ol>
+        {p.parts && p.parts.length > 0 && (
+          <>
+            <h2 className="font-hand text-3xl leading-none text-pen md:text-right">
+              {p.parts.length > 1 ? "the labs" : "the lab"}
+            </h2>
+            <div className="grid gap-6 lg:grid-cols-2">
+              {p.parts.map((part, n) => (
+                <Card key={part.name} as="article" className={n % 2 ? "bg-bubblegum-soft" : ""}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-cherry">
+                      Lab {String(n + 1).padStart(2, "0")}
+                    </span>
+                    {part.when && <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-soft">{part.when}</span>}
+                  </div>
+                  <h3 className="mt-2 font-display text-2xl font-extrabold leading-tight tracking-tight">
+                    <Todo text={part.name} />
+                  </h3>
+                  <p className="mt-1 font-hand text-2xl leading-tight text-pen">{part.focus}</p>
+                  {part.about && <p className="mt-3 text-[14px] leading-relaxed text-ink-soft">{part.about}</p>}
+                  <ul className="mt-4 space-y-2">
+                    {part.bullets.map((b) => (
+                      <li key={b} className="flex gap-2.5 text-[15px] leading-relaxed">
+                        <span aria-hidden className="mt-[0.55em] size-1.5 shrink-0 rotate-45 bg-bubblegum" />
+                        <span>
+                          <Todo text={b} />
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {part.link && (
+                    <a
+                      href={part.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-cherry hover:underline"
+                    >
+                      {part.link.label} <ArrowUpRight aria-hidden className="size-4" />
+                    </a>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </>
+        )}
+
+        {p.process.length > 0 && (
+          <>
+          <h2 className="font-hand text-3xl leading-none text-pen md:text-right">the process</h2>
+          <ol className="space-y-4">
+            {p.process.map((step, n) => (
+              <li key={step} className="flex gap-4">
+                <span className="grid size-7 shrink-0 place-items-center rounded-full border-[1.5px] border-ink bg-paper font-mono text-[12px]">
+                  {n + 1}
+                </span>
+                <p className="pt-0.5 text-[17px] leading-relaxed">
+                  <Todo text={step} />
+                </p>
+              </li>
+            ))}
+          </ol>
+          </>
+        )}
 
         <h2 className="font-hand text-3xl leading-none text-pen md:text-right">the outcome</h2>
         <p className="text-[17px] leading-relaxed">
           <Todo text={p.outcome} />
         </p>
+
+        {p.gallery && p.gallery.length > 0 && (
+          <>
+            <h2 className="font-hand text-3xl leading-none text-pen md:text-right">the work</h2>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {p.gallery.map((img, n) => (
+                <a
+                  key={img.src}
+                  href={img.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block overflow-hidden rounded-[6px] border-[1.5px] border-ink bg-paper p-2 shadow-[4px_4px_0_var(--ink)] transition hover:-translate-y-1 hover:rotate-0 ${n % 2 ? "rotate-[1deg]" : "-rotate-[1deg]"}`}
+                >
+                  <Image src={img.src} alt={img.alt} width={1030} height={1370} className="h-auto w-full" sizes="(min-width: 768px) 40vw, 90vw" />
+                </a>
+              ))}
+            </div>
+          </>
+        )}
 
         {p.links.length > 0 && (
           <>

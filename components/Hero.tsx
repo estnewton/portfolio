@@ -18,7 +18,8 @@ export function Hero({ toolbar }: { toolbar?: React.ReactNode }) {
 
         <div>
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-soft">{site.kicker.join(" · ")}</p>
-          <h1 className="mt-4 font-serif text-[clamp(3.1rem,6vw,5.9rem)] leading-[0.9] tracking-[-0.02em] text-ink">
+          <p className="mt-4 font-hand text-[2.1rem] leading-none text-pen">hi, I&apos;m Esther :)</p>
+          <h1 className="mt-2 font-serif text-[clamp(3.1rem,6vw,5.9rem)] leading-[0.9] tracking-[-0.02em] text-ink">
             {site.headline.before}{" "}
             <span className="whitespace-nowrap">
               <em className="relative inline-block text-cherry">
@@ -34,9 +35,7 @@ export function Hero({ toolbar }: { toolbar?: React.ReactNode }) {
               </em>
               {site.headline.after}
             </span>
-          </h1>
-          <p className="mt-3 font-hand text-2xl text-pen">— hi, i&apos;m esther :)</p>
-        </div>
+          </h1>        </div>
 
         <p className="max-w-md text-[16px] leading-relaxed text-ink-soft">{site.intro}</p>
 

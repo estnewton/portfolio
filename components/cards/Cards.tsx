@@ -91,7 +91,7 @@ export function HighlightsCard() {
     <Link href="/highlights" draggable={false} className={linkBase} style={{ width: 210 }}>
       <div className="relative rounded-[18px] border-2 border-dashed border-ink/25 bg-kraft p-4 paper-shadow">
         <Pushpin className="absolute -top-4 left-1/2 size-8 -translate-x-1/2" color="var(--bubblegum)" />
-        <Label className="text-cherry">Highlights</Label>
+        <Label className="text-cherry">Honors &amp; Affiliations</Label>
         <div className="mt-3 grid grid-cols-3 gap-2">
           {highlights.map((h, i) => (
             <span
@@ -125,7 +125,7 @@ export function AboutCard() {
       >
         <Label className="text-cherry">About me</Label>
         <p className="mt-2 font-hand text-[22px] leading-[1.05] text-pen">
-          IE nerd, PM in training, study-abroad alum. the story, the skills and the map →
+          The story. The skills. The map →
         </p>
         <div className="mt-2">
           <Caption>nice to meet you</Caption>
@@ -147,7 +147,7 @@ export function ContactCard() {
           <div>
             <Label className="text-cherry">Contact</Label>
             <div className="mt-1">
-              <Caption>say hi :)</Caption>
+              <Caption>don&apos;t be a stranger</Caption>
             </div>
           </div>
           <span aria-hidden className="grid size-12 place-items-center rounded-full bg-cherry font-hand text-lg text-paper">
