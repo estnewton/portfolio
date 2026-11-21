@@ -12,7 +12,7 @@ export function SectionShell({ current, children }: { current?: string; children
             href="/"
             className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-ink bg-paper px-3.5 py-1.5 text-sm font-medium transition hover:-translate-x-0.5 hover:bg-bubblegum-soft"
           >
-            <ArrowLeft aria-hidden className="size-4" /> Back to the board
+            <ArrowLeft aria-hidden className="size-4" /> Back home
           </Link>
           <nav aria-label="Sections">
             <ul className="flex flex-wrap gap-1">
@@ -40,7 +40,7 @@ export function SectionShell({ current, children }: { current?: string; children
         {children}
       </main>
       <footer className="mx-auto max-w-5xl px-5 pb-10 font-mono text-[11px] uppercase tracking-wider text-ink-soft sm:px-8">
-        {site.name} · {site.location}
+        {site.name}
       </footer>
     </div>
   );

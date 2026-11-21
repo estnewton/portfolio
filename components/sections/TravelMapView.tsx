@@ -30,7 +30,9 @@ export function TravelMapView({ W, H, mapW, mapH, cities, regions, countriesWith
   const anim = useRef<AnimationPlaybackControls | null>(null);
   const drag = useRef<{ px: number; py: number; start: View; moved: boolean; hit: string | null } | null>(null);
   const [unit, setUnit] = useState(1); // viewBox units per screen pixel
-  const [selected, setSelected] = useState<string | null>(null);
+  // The featured city (see content/travel.ts) starts with its photo open.
+  const featuredId = cities.find((c) => c.featured)?.id ?? null;
+  const [selected, setSelected] = useState<string | null>(featuredId);
   const [activeRegion, setActiveRegion] = useState<string | undefined>(regions[0]?.label);
 
   const clamp = useCallback(
@@ -276,6 +278,17 @@ export function TravelMapView({ W, H, mapW, mapH, cities, regions, countriesWith
           {placed.pts.map(({ c, sx, sy }) => (
             <g key={c.id} data-city={c.id} className="cursor-pointer">
               <circle cx={sx} cy={sy} r={12 * unit} fill="transparent" />
+              {c.featured && (
+                <circle
+                  cx={sx}
+                  cy={sy}
+                  r={11 * unit}
+                  fill="none"
+                  stroke="var(--bubblegum)"
+                  strokeWidth={2.5 * unit}
+                  className="motion-safe:animate-pulse"
+                />
+              )}
               <circle
                 cx={sx}
                 cy={sy}
@@ -327,7 +340,7 @@ export function TravelMapView({ W, H, mapW, mapH, cities, regions, countriesWith
           <div
             role="dialog"
             aria-label={`${sel.c.name}, ${sel.c.countryName}`}
-            className="absolute z-10 w-[min(13rem,45%)]"
+            className={`absolute z-10 ${sel.c.photoAspect ? "w-[min(11rem,40%)]" : "w-[min(13rem,45%)]"}`}
             style={{
               left: `${(sel.sx / W) * 100}%`,
               top: `${(sel.sy / H) * 100}%`,
@@ -343,7 +356,10 @@ export function TravelMapView({ W, H, mapW, mapH, cities, regions, countriesWith
               >
                 <X aria-hidden className="size-3.5" />
               </button>
-              <div className="relative aspect-[4/3] overflow-hidden bg-bubblegum-soft">
+              <div
+                className="relative overflow-hidden bg-bubblegum-soft"
+                style={{ aspectRatio: sel.c.photoAspect ?? "4 / 3" }}
+              >
                 {sel.c.photo ? (
                   <Image
                     src={sel.c.photo}

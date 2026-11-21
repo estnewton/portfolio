@@ -5,16 +5,17 @@ import { boardItems } from "@/content/board";
 import { toPx } from "@/lib/board";
 import { AvatarCard } from "@/components/cards/AvatarCard";
 import {
-  AboutCard,
+  AfrotechPolaroid,
+  AskMeNote,
+  BoardingPass,
+  BonjourBubble,
   ContactCard,
   CurrentlyCard,
   DiscoSticker,
-  ExperienceCard,
-  HighlightsCard,
   HintNote,
   NameSticker,
-  PinSticker,
-  ProjectsCard,
+  PaletteSticker,
+  PickleballSticker,
   StarSticker,
 } from "@/components/cards/Cards";
 import { BoardItem } from "./BoardItem";
@@ -23,17 +24,18 @@ import { useBoard } from "./BoardProvider";
 // Map board ids (from content/board.ts) to what they render.
 const RENDER: Record<string, { node: React.ReactNode; focusable: boolean }> = {
   avatar: { node: <AvatarCard />, focusable: true },
-  projects: { node: <ProjectsCard />, focusable: false },
-  experience: { node: <ExperienceCard />, focusable: false },
-  highlights: { node: <HighlightsCard />, focusable: false },
-  about: { node: <AboutCard />, focusable: false },
   contact: { node: <ContactCard />, focusable: false },
   currently: { node: <CurrentlyCard />, focusable: true },
   name: { node: <NameSticker />, focusable: false },
   disco: { node: <DiscoSticker />, focusable: false },
   star: { node: <StarSticker />, focusable: false },
-  pin: { node: <PinSticker />, focusable: false },
   hint: { node: <HintNote />, focusable: false },
+  pickleball: { node: <PickleballSticker />, focusable: false },
+  palette: { node: <PaletteSticker />, focusable: false },
+  bonjour: { node: <BonjourBubble />, focusable: false },
+  pass: { node: <BoardingPass />, focusable: false },
+  askme: { node: <AskMeNote />, focusable: false },
+  afrotech: { node: <AfrotechPolaroid />, focusable: false },
 };
 
 export function Board() {

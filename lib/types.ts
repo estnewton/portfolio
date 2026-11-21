@@ -26,6 +26,8 @@ export type Project = {
   /** e.g. "2026" or "2025–present" */
   when: string;
   status?: "building" | "shipped" | "ongoing" | "research";
+  /** Details not written yet: shows "incoming" instead of linking to a case study page (and the page 404s). */
+  comingSoon?: boolean;
   tags: string[];
   problem: string;
   role: string;

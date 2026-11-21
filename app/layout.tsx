@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bagel_Fat_One, Caveat, DM_Mono, DM_Sans, Instrument_Serif, Inter_Tight, Syncopate } from "next/font/google";
+import { Bagel_Fat_One, Caveat, DM_Mono, DM_Sans, Fraunces, Instrument_Serif, Inter_Tight, Syncopate } from "next/font/google";
 import { MotionProvider } from "@/components/ui/MotionProvider";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -10,6 +10,13 @@ const dmMono = DM_Mono({ variable: "--font-dm-mono", subsets: ["latin"], weight:
 const caveat = Caveat({ variable: "--font-caveat", subsets: ["latin"] });
 const wide = Syncopate({ variable: "--font-syncopate", subsets: ["latin"], weight: "700" });
 const bagel = Bagel_Fat_One({ variable: "--font-bagel", subsets: ["latin"], weight: "400" });
+// The big name in the home page hero
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["600"],
+  style: ["normal", "italic"],
+});
 const serif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
@@ -43,7 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${interTight.variable} ${dmSans.variable} ${dmMono.variable} ${caveat.variable} ${bagel.variable} ${serif.variable} ${wide.variable} antialiased`}
+      className={`${interTight.variable} ${dmSans.variable} ${dmMono.variable} ${caveat.variable} ${bagel.variable} ${serif.variable} ${fraunces.variable} ${wide.variable} antialiased`}
     >
       <body className="min-h-dvh">
         <a

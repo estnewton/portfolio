@@ -27,6 +27,8 @@ export const projects: Project[] = [
 
   {
     slug: "she-builds",
+    // Remove this line once the details below are filled in, and the case study page goes live.
+    comingSoon: true,
     title: "She Builds",
     tagline: "K–12 outreach that gets young students, especially girls, excited about building.",
     when: "TODO",

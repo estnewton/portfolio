@@ -1,13 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { currently } from "@/content/currently";
-import { experience } from "@/content/experience";
-import { highlights } from "@/content/highlights";
-import { projects } from "@/content/projects";
+import { bookCover, currently } from "@/content/currently";
 import { site } from "@/content/site";
-import { BinderClip, DiscoBall, PinIcon, Pushpin, SquiggleArrow, StarDoodle, Tape } from "@/components/decor/Decor";
+import { DiscoBall, PaintPalette, PickleballPaddle, Pushpin, SquiggleArrow, StarDoodle, Tape } from "@/components/decor/Decor";
 
-// Presentational cards shared by the draggable board and the mobile stack.
+// Presentational cards for the draggable board.
 // They read from /content, so you shouldn't need to edit these to update text.
 
 const linkBase =
@@ -30,110 +28,6 @@ function Label({ children, className = "" }: { children: React.ReactNode; classN
 }
 
 /* ── Section cards ─────────────────────────────────────────────────── */
-
-export function ProjectsCard() {
-  return (
-    <Link href="/projects" draggable={false} className={linkBase} style={{ width: 210 }}>
-      <div className="relative bg-paper p-3 pb-4 paper-shadow">
-        <BinderClip className="absolute -top-7 left-1/2 w-16 -translate-x-1/2" />
-        <div className="flex h-[160px] flex-col justify-between bg-bubblegum-soft p-3">
-          <Label className="text-cherry">Projects</Label>
-          <ol className="space-y-1">
-            {projects.map((p, i) => (
-              <li key={p.slug} className="flex items-baseline gap-2 font-serif text-[19px] leading-[1.05]">
-                <span className="font-mono text-[10px] font-normal text-cherry">{String(i + 1).padStart(2, "0")}</span>
-                {p.title}
-              </li>
-            ))}
-          </ol>
-        </div>
-        <div className="mt-3 text-center">
-          <Caption>things I&apos;ve made</Caption>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-export function ExperienceCard() {
-  const top = experience.filter((e) => e.org.includes("Amazon")).slice(0, 2);
-  const more = experience.length - top.length;
-  return (
-    <Link href="/experience" draggable={false} className={linkBase} style={{ width: 240 }}>
-      <div className="relative lined-paper paper-shadow px-4 pb-4 pl-10 pt-3">
-        <Tape className="absolute -top-3 right-6 h-6 w-20 rotate-[8deg]" />
-        <Label className="text-cherry">Experience</Label>
-        <ul className="mt-2 space-y-[3px] font-serif text-[17px] leading-[21px]">
-          {top.map((e) => (
-            <li key={e.id}>
-              AWS · <em>{shortRole(e.role)}</em> &apos;{e.start.slice(2, 4)}
-            </li>
-          ))}
-          <li className="text-ink-soft">+ {more} more roles</li>
-        </ul>
-        <div className="mt-2">
-          <Caption>where I&apos;ve worked</Caption>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function shortRole(role: string) {
-  if (role.includes("Product Manager")) return "SWE + PM";
-  if (role.includes("Software Development")) return "SDE";
-  return role;
-}
-
-export function HighlightsCard() {
-  const colors = ["bg-bubblegum text-ink", "bg-cherry text-paper", "bg-pen text-paper", "bg-paper text-cherry", "bg-ink text-bubblegum-soft"];
-  return (
-    <Link href="/highlights" draggable={false} className={linkBase} style={{ width: 210 }}>
-      <div className="relative rounded-[18px] border-2 border-dashed border-ink/25 bg-kraft p-4 paper-shadow">
-        <Pushpin className="absolute -top-4 left-1/2 size-8 -translate-x-1/2" color="var(--bubblegum)" />
-        <Label className="text-cherry">Honors &amp; Affiliations</Label>
-        <div className="mt-3 grid grid-cols-3 gap-2">
-          {highlights.slice(0, 6).map((h, i) => (
-            <span
-              key={h.id}
-              title={h.title}
-              className={`flex aspect-square items-center justify-center rounded-full border-2 border-paper font-display text-[11px] font-extrabold shadow-sm ${colors[i % colors.length]}`}
-              style={{ rotate: `${(i % 2 ? 1 : -1) * (4 + i * 2)}deg` }}
-            >
-              {h.mark}
-            </span>
-          ))}
-        </div>
-        <div className="mt-3">
-          <Caption>shiny things</Caption>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-export function AboutCard() {
-  return (
-    <Link href="/about" draggable={false} className={`${linkBase} relative`} style={{ width: 210 }}>
-      <Pushpin className="absolute -top-3 left-6 z-10 size-8" />
-      <div
-        className="relative bg-paper px-5 pb-5 pt-6 paper-shadow"
-        style={{
-          clipPath:
-            "polygon(0 4%, 6% 0, 14% 3%, 24% 0, 36% 2%, 48% 0, 60% 3%, 72% 0, 84% 2%, 94% 0, 100% 4%, 100% 100%, 0 100%)",
-        }}
-      >
-        <Label className="text-cherry">About me</Label>
-        <p className="mt-2 font-hand text-[22px] leading-[1.05] text-pen">
-          The story. The skills. The map →
-        </p>
-        <div className="mt-2">
-          <Caption>nice to meet you</Caption>
-        </div>
-      </div>
-    </Link>
-  );
-}
 
 export function ContactCard() {
   return (
@@ -169,15 +63,40 @@ export function CurrentlyCard() {
         <Label className="text-cherry">Currently</Label>
         <span className="font-mono text-[10px] text-ink-soft">{currently.updated}</span>
       </div>
-      <dl className="mt-2 space-y-2">
-        {currently.items.map((it) => (
-          <div key={it.label}>
-            <dt className="font-hand text-xl leading-none text-pen">{it.label}</dt>
-            <dd className="font-serif text-[18px] leading-[1.15]">{it.text}</dd>
-          </div>
-        ))}
-      </dl>
+      <CurrentlyList />
     </section>
+  );
+}
+
+/** The building / reading / learning lines, with the book cover beside "reading". Used on the board and in About. */
+export function CurrentlyList() {
+  const book = currently.book;
+  return (
+    <dl className="mt-2 space-y-2">
+      {currently.items.map((it) => {
+        const showCover = it.label === "reading" && book;
+        return (
+          <div key={it.label} className={showCover ? "flex items-start gap-3" : undefined}>
+            <div className="min-w-0 flex-1">
+              <dt className="font-hand text-xl leading-none text-pen">{it.label}</dt>
+              <dd className="font-serif text-[18px] leading-[1.15]">{it.text}</dd>
+            </div>
+            {showCover && (
+              // eslint-disable-next-line @next/next/no-img-element -- remote cover from Open Library
+              <img
+                src={bookCover(book.isbn)}
+                alt={`Cover of ${book.title} by ${book.author}`}
+                width={48}
+                height={62}
+                loading="lazy"
+                draggable={false}
+                className="h-[62px] w-12 shrink-0 rotate-3 rounded-[2px] object-cover shadow-[0_4px_8px_-3px_rgba(30,27,24,0.45)]"
+              />
+            )}
+          </div>
+        );
+      })}
+    </dl>
   );
 }
 
@@ -205,20 +124,108 @@ export function StarSticker() {
   return <StarDoodle className="block size-[60px]" />;
 }
 
-export function PinSticker() {
-  return (
-    <span className="flex items-center gap-1.5 rounded-full bg-paper px-3 py-2 paper-shadow" style={{ width: 170 }}>
-      <PinIcon className="h-6 w-4 shrink-0" />
-      <span className="font-mono text-[11px] uppercase tracking-wider text-ink">{site.location}</span>
-    </span>
-  );
-}
-
 export function HintNote() {
   return (
     <span className="flex items-center gap-1 bg-paper px-3 py-2 paper-shadow" style={{ width: 190 }}>
       <span className="font-hand text-[22px] leading-[1] text-pen">psst… drag things around</span>
       <SquiggleArrow className="w-10 shrink-0 -rotate-12" />
     </span>
+  );
+}
+
+/* ── Fun stickers: hobbies and bits of personality, nothing repeated from the page ── */
+
+export function PickleballSticker() {
+  return (
+    <span className="relative block" style={{ width: 96 }}>
+      <PickleballPaddle className="block h-[120px] w-24 drop-shadow-md" />
+      <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap font-hand text-lg leading-none text-ink">
+        pickleball?
+      </span>
+    </span>
+  );
+}
+
+export function PaletteSticker() {
+  return (
+    <span className="relative block" style={{ width: 100 }}>
+      <PaintPalette className="block h-[84px] w-[100px] drop-shadow-md" />
+      <span className="absolute -bottom-4 right-0 font-hand text-lg leading-none text-ink">I paint!</span>
+    </span>
+  );
+}
+
+export function BonjourBubble() {
+  return (
+    <span className="relative block rounded-[22px] border-2 border-ink bg-paper px-4 py-2 text-center" style={{ width: 150 }}>
+      <span className="font-hand text-[30px] leading-none text-cherry">bonjour!</span>
+      <span className="block font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">(still learning)</span>
+      <svg aria-hidden viewBox="0 0 30 20" className="absolute -bottom-[14px] left-6 h-4 w-7">
+        <path d="M2 0 L10 18 L22 0" fill="var(--paper)" stroke="var(--ink)" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M0 0 H30" stroke="var(--paper)" strokeWidth="4" />
+      </svg>
+    </span>
+  );
+}
+
+export function BoardingPass() {
+  return (
+    <span className="relative flex overflow-hidden rounded-[8px] bg-paper paper-shadow" style={{ width: 240 }}>
+      <Tape className="absolute -top-2 left-8 z-10 h-5 w-16 -rotate-6" />
+      <span className="flex-1 border-r-2 border-dashed border-ink/20 p-3">
+        <Label className="text-cherry">Boarding pass</Label>
+        <span className="mt-1 flex items-center gap-2 font-mono text-[22px] font-medium leading-none text-ink">
+          USA <span className="text-pen">✈</span> FRA
+        </span>
+        <span className="mt-2 grid grid-cols-2 gap-x-2 font-mono text-[9px] uppercase tracking-wider text-ink-soft">
+          <span>
+            Purpose
+            <span className="block text-[11px] text-ink">Study abroad</span>
+          </span>
+          <span>
+            Seat
+            <span className="block text-[11px] text-ink">Window</span>
+          </span>
+        </span>
+      </span>
+      <span className="grid w-14 place-items-center bg-bubblegum-soft">
+        <span className="rotate-90 whitespace-nowrap font-hand text-lg text-cherry">bon voyage</span>
+      </span>
+    </span>
+  );
+}
+
+export function AskMeNote() {
+  return (
+    <span className="relative block lined-paper px-4 pb-3 pl-9 pt-3 paper-shadow" style={{ width: 200 }}>
+      <Pushpin className="absolute -top-3 right-5 size-7" color="var(--bubblegum)" />
+      <Label className="text-cherry">Ask me about</Label>
+      <span className="mt-1 block font-hand text-[21px] leading-[24px] text-pen">
+        my Mona Lisa photo
+        <br />
+        the best train routes in France
+        <br />
+        my pickleball serve
+      </span>
+    </span>
+  );
+}
+
+export function AfrotechPolaroid() {
+  return (
+    <figure className="relative bg-paper p-2.5 pb-2 paper-shadow" style={{ width: 190 }}>
+      <Tape className="absolute -top-3 right-6 h-6 w-16 rotate-6" />
+      <div className="relative aspect-[700/564] bg-ink">
+        <Image
+          src="/images/afrotech.jpg"
+          alt="Esther in front of the AFROTECH Conference backdrop, wearing a conference badge."
+          fill
+          sizes="190px"
+          draggable={false}
+          className="object-cover"
+        />
+      </div>
+      <figcaption className="pt-1.5 text-center font-hand text-xl leading-none text-ink">AFROTECH &apos;25</figcaption>
+    </figure>
   );
 }

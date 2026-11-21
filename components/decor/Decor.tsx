@@ -131,3 +131,50 @@ export function Pushpin({ className = "", style, color = "var(--cherry)" }: Prop
     </svg>
   );
 }
+
+export function PickleballPaddle({ className = "", style }: Props) {
+  // Paddle with a perforated ball beside it.
+  const holes = [
+    [70, 18], [79, 22], [84, 31], [80, 40], [71, 43], [63, 38], [62, 28], [72, 31],
+  ];
+  return (
+    <svg aria-hidden viewBox="0 0 96 120" className={className} style={style}>
+      <rect x="31" y="78" width="14" height="38" rx="5" fill="#2a2724" transform="rotate(-14 38 97)" />
+      <rect x="33" y="84" width="10" height="3" rx="1.5" fill="#4a4540" transform="rotate(-14 38 97)" />
+      <rect x="33" y="92" width="10" height="3" rx="1.5" fill="#4a4540" transform="rotate(-14 38 97)" />
+      <rect x="6" y="8" width="56" height="78" rx="24" fill="var(--pen)" transform="rotate(-14 34 47)" />
+      <rect x="12" y="14" width="44" height="66" rx="19" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2" transform="rotate(-14 34 47)" />
+      <circle cx="73" cy="31" r="15" fill="#e8f04a" stroke="rgba(0,0,0,0.12)" />
+      {holes.map(([cx, cy], i) => (
+        <circle key={i} cx={cx} cy={cy} r="1.8" fill="#b9c22a" />
+      ))}
+    </svg>
+  );
+}
+
+export function PaintPalette({ className = "", style }: Props) {
+  const paints = [
+    ["var(--cherry)", 26, 26],
+    ["var(--bubblegum)", 44, 18],
+    ["var(--pen)", 63, 21],
+    ["#f2c14e", 76, 36],
+    ["#3f9e7a", 72, 54],
+  ] as const;
+  return (
+    <svg aria-hidden viewBox="0 0 100 84" className={className} style={style}>
+      <path
+        d="M50 4 C78 4, 97 22, 96 44 C95 60, 82 64, 72 60 C64 57, 58 62, 60 70 C62 79, 52 82, 42 80 C18 76, 4 60, 4 40 C4 18, 24 4, 50 4 Z"
+        fill="#e9d2a8"
+        stroke="rgba(90,60,30,0.35)"
+        strokeWidth="1.5"
+      />
+      <ellipse cx="30" cy="58" rx="7" ry="6" fill="var(--board)" stroke="rgba(90,60,30,0.3)" />
+      {paints.map(([fill, cx, cy]) => (
+        <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="7.5" fill={fill} />
+      ))}
+      <path d="M58 58 L92 82" stroke="#6b4a2b" strokeWidth="4" strokeLinecap="round" />
+      <path d="M52 53 L60 59" stroke="#2a2724" strokeWidth="6" strokeLinecap="round" />
+      <path d="M47 50 L53 54" stroke="var(--bubblegum)" strokeWidth="5" strokeLinecap="round" />
+    </svg>
+  );
+}

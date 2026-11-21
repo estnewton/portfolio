@@ -9,6 +9,12 @@ export const about = {
   ],
   // Put a photo at /public/images/esther.jpg and set src to "/images/esther.jpg".
   photo: { src: "/images/esther.jpg", alt: "Esther smiling in a cream jacket on a cliffside overlooking the Mediterranean" },
+  // A second photo beside the story on the home page, with a handwritten caption.
+  familyPhoto: {
+    src: "/images/childhood.jpg",
+    alt: "Esther as a baby in a pink top, sitting on her older brother's lap in an armchair.",
+    caption: "me and my brother",
+  },
   lookingFor: {
     title: "Internships and full-time roles",
     detail:

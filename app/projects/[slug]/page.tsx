@@ -9,7 +9,7 @@ import { SectionShell } from "@/components/sections/SectionShell";
 import { Card, Tag, Todo } from "@/components/sections/ui";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.filter((p) => !p.comingSoon).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/projects/[slug]">): Promise<Metadata> {
@@ -32,9 +32,11 @@ export default function Page({ params }: PageProps<"/projects/[slug]">) {
 async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const i = projects.findIndex((x) => x.slug === slug);
-  if (i === -1) notFound();
+  if (i === -1 || projects[i].comingSoon) notFound();
   const p = projects[i];
-  const next = projects[(i + 1) % projects.length];
+  // the next project that has a page (skips ones marked comingSoon)
+  const live = projects.filter((x) => !x.comingSoon);
+  const next = live[(live.indexOf(p) + 1) % live.length];
 
   return (
     <>

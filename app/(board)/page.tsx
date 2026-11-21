@@ -1,8 +1,14 @@
-import { Board } from "@/components/board/Board";
 import { BoardProvider } from "@/components/board/BoardProvider";
-import { BoardToolbar } from "@/components/board/BoardToolbar";
-import { Hero } from "@/components/Hero";
-import { MobileStack } from "@/components/MobileStack";
+import { HomeHero } from "@/components/home/HomeHero";
+import {
+  AboutBlock,
+  BoardBlock,
+  ConnectBlock,
+  ExperienceBlock,
+  HonorsBlock,
+  ProjectsBlock,
+} from "@/components/home/HomeSections";
+import { SiteNav } from "@/components/home/SiteNav";
 import { about } from "@/content/about";
 import { site } from "@/content/site";
 
@@ -21,6 +27,8 @@ const personJsonLd = {
   ...(about.photo.src ? { image: `${site.url}${about.photo.src}` } : {}),
 };
 
+// One long page: hero, then each section in order. The draggable cork board lives near the
+// end (desktop only), and its cards still open each section in a slide-over panel.
 export default function Home() {
   return (
     <BoardProvider>
@@ -28,30 +36,25 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c") }}
       />
-      {/* Without JavaScript the board can't position its cards, so show the stacked layout instead. */}
+      {/* Without JavaScript the board can't position its cards, so leave it out. */}
       <noscript>
-        <style>{`.board-js{display:none!important}.board-nojs{display:block!important}`}</style>
+        <style>{`.board-js{display:none!important}`}</style>
       </noscript>
-      <main
-        id="main"
-        className="blush-paper min-h-dvh lg:grid lg:h-dvh lg:min-h-[760px] lg:grid-cols-[minmax(420px,37%)_1fr] lg:overflow-hidden"
-      >
-        <Hero toolbar={<BoardToolbar />} />
-
-        {/* Desktop: draggable cork board in a wood frame */}
-        <div className="board-js hidden py-6 pr-6 lg:block">
-          <div className="cork-frame h-full rounded-[14px] p-3">
-            <div className="cork-bg h-full rounded-[6px]">
-              <Board />
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile + tablet (and desktop without JavaScript): scrollable stack on cork */}
-        <div className="board-nojs cork-bg lg:hidden lg:overflow-y-auto">
-          <MobileStack />
-        </div>
-      </main>
+      <div className="blush-paper min-h-dvh">
+        <SiteNav />
+        <main id="main">
+          <HomeHero />
+          <AboutBlock />
+          <ExperienceBlock />
+          <ProjectsBlock />
+          <HonorsBlock />
+          <BoardBlock />
+          <ConnectBlock />
+        </main>
+        <footer className="mx-auto max-w-5xl border-t border-ink/15 px-4 py-8 font-mono text-[11px] uppercase tracking-wider text-ink-soft sm:px-8">
+          {site.name}
+        </footer>
+      </div>
     </BoardProvider>
   );
 }

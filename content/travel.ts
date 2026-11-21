@@ -11,6 +11,9 @@
 //   photoPosition  Optional focus point for the crop, e.g. "50% 90%" keeps the bottom of a tall photo.
 //   caption Optional line under the photo.
 //   cluster Nearby cities that share one label when the map is zoomed out.
+//   featured  The one highlighted spot: its photo is open when the map loads.
+//
+// This map covers where I traveled while studying abroad (Europe and Morocco).
 
 export type City = {
   name: string;
@@ -21,6 +24,10 @@ export type City = {
   photoPosition?: string;
   caption?: string;
   cluster?: string;
+  /** Optional shape of the pop-up photo, e.g. "3 / 4" for a tall photo, so it shows uncropped. Default 4 / 3. */
+  photoAspect?: string;
+  /** The highlighted spot: its photo is open when the map loads and its dot gets a ring. */
+  featured?: boolean;
 };
 
 const countries = [
@@ -32,12 +39,20 @@ const countries = [
   "Hungary",
   "United Kingdom",
   "Morocco",
-  "United States of America",
 ];
 
 const cities: City[] = [
   // Europe
-  { name: "Paris", country: "France", coords: [2.352, 48.857] },
+  {
+    name: "Paris",
+    country: "France",
+    coords: [2.352, 48.857],
+    featured: true,
+    photo: "/images/travel/paris.jpg",
+    photoAlt: "Esther smiling in a fluffy cream coat in front of the Mona Lisa at the Louvre.",
+    photoAspect: "3 / 4",
+    caption: "Me and the Mona Lisa",
+  },
   { name: "Aix-en-Provence", country: "France", coords: [5.447, 43.529], cluster: "Provence & Riviera" },
   { name: "Marseille", country: "France", coords: [5.37, 43.297], cluster: "Provence & Riviera" },
   { name: "Saint-Tropez", country: "France", coords: [6.64, 43.272], cluster: "Provence & Riviera" },
@@ -75,19 +90,6 @@ const cities: City[] = [
     photoAlt: "A line of ATVs riding over tall orange sand dunes in the Moroccan Sahara under a blue sky.",
     photoPosition: "50% 72%",
   },
-
-  // United States
-  { name: "New York City", country: "United States of America", coords: [-74.006, 40.713] },
-  { name: "Washington, DC", country: "United States of America", coords: [-77.037, 38.907] },
-  { name: "Pittsburgh", country: "United States of America", coords: [-79.996, 40.441] },
-  { name: "Buffalo", country: "United States of America", coords: [-78.878, 42.886], cluster: "Buffalo & Niagara" },
-  { name: "Niagara Falls", country: "United States of America", coords: [-79.074, 43.083], cluster: "Buffalo & Niagara" },
-  { name: "Wilmington", country: "United States of America", coords: [-77.945, 34.226], caption: "North Carolina" },
-  { name: "Miami", country: "United States of America", coords: [-80.192, 25.762], cluster: "Florida" },
-  { name: "West Palm Beach", country: "United States of America", coords: [-80.053, 26.715], cluster: "Florida" },
-  { name: "Orlando", country: "United States of America", coords: [-81.379, 28.538], cluster: "Florida" },
-  { name: "Seattle", country: "United States of America", coords: [-122.332, 47.606] },
-  { name: "San Francisco", country: "United States of America", coords: [-122.419, 37.775] },
 ];
 
 /** Friendlier names for the list under the map. */
@@ -98,15 +100,15 @@ export const travel = {
   countries,
   cities,
   /** Whole draggable area, [west, south] to [east, north] in longitude/latitude. */
+  // Keep it about 1.7x wider than tall (in degrees) so it fills the map frame.
   bounds: [
-    [-130, 16],
-    [34, 62],
+    [-28, 27],
+    [44, 58],
   ] as [[number, number], [number, number]],
   /** Quick-jump buttons above the map. The first one is the starting view. */
   regions: [
-    { label: "Europe", bounds: [[-11, 29], [22, 55]] },
-    { label: "United States", bounds: [[-125, 24], [-67, 49]] },
-    { label: "Everywhere", bounds: [[-128, 18], [32, 60]] },
+    { label: "Everywhere", bounds: [[-11, 29], [22, 55]] },
+    { label: "France", bounds: [[-5, 41.5], [9.5, 51.5]] },
   ] as { label: string; bounds: [[number, number], [number, number]] }[],
   headline: `${cities.length} cities, ${countries.length} countries, and counting`,
 };
